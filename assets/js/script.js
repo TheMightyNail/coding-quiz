@@ -1,8 +1,3 @@
-// You will only have <span>X seconds</span> amount of time to answer the question.
-// Once you select an answer, you cannot reselect
-// Once timer goes off, you cannot select an answer
-// You'll get points based on correct answers
-// Your score will be saved and the high score will be displayed
 var quizQuestions = [
     "What syntax is used for an array?", "What does CSS stand for?", "How long did it take for JavaScript to be created?", 
     "How do you save your work using Git?", "Which syntax would you use to reference an element's ID?"
@@ -55,38 +50,42 @@ var startButtonEl = document.querySelector(".start-btn");
 var quizQuestionEl = document.querySelector(".main-title");
 var quizAnswerEl = document.querySelector(".answer");
 var firstAnswerEl = document.querySelector("#first");
-var secondAnswerEl = document.querySelector("#second")
-var thirdAnswerEl = document.querySelector("#third")
-var fourthAnswerEl = document.querySelector("#fourth")
-var fifthAnswerEl = document.querySelector("#fifth")
+var secondAnswerEl = document.querySelector("#second");
+var thirdAnswerEl = document.querySelector("#third");
+var fourthAnswerEl = document.querySelector("#fourth");
+var fifthAnswerEl = document.querySelector("#fifth");
 
 var quizOne= {
     question: quizQuestions[0],
-    answer: quizAnswersOne[0],
-    answer: quizAnswersOne[1],
-    answer: quizAnswersOne[2],
-    answer: quizAnswersOne[3]
+    answer1: quizAnswersOne[0],
+    answer2: quizAnswersOne[1],
+    answer3: quizAnswersOne[2],
+    answer4: quizAnswersOne[3]
 }
 
 var switchText = function() {
     quizQuestionEl.textContent = quizOne.question;
 
-    // getting somewhere with this one. Still need to figure out how the text replaces - maybe can use event.target to return true or false value.
-    // reconsider making the .answer class into <li> - might be able to work with that easier. 
+    secondAnswerEl.textContent = quizOne.answer1;
+    secondAnswerEl.className = "btn answer-btn";
+
+    thirdAnswerEl.textContent = quizOne.answer2;
+    thirdAnswerEl.className = "btn answer-btn";
+
+    fourthAnswerEl.textContent = quizOne.answer3;
+    fourthAnswerEl.className = "btn answer-btn";
+
+    fifthAnswerEl.textContent = quizOne.answer4;
+    fifthAnswerEl.className = "btn answer-btn";
 
     for (var i=0; i < quizAnswersOne.length; i++) {
-       var answerButtonEl = document.createElement("button");
-        answerButtonEl.textContent = quizOne.answer[i];
-         if (quizOne.answer[i] != [2]) {
-            console.log("false");
-        } return answerButtonEl;
-    }
-//     // this does not work because they are pulling from the same class, so only the first answer gets displayed. This won't work anyway, because
-//     // they need to be their own containers or buttons. But the idea is there, just have to figure out the array better. probably with   
-//     quizAnswerEl.textContent = quizOne.answer1;
-//     quizAnswerEl.textContent = quizOne.answer2;
-//     quizAnswerEl.textContent = quizOne.answer3;
-//     quizAnswerEl.textContent = quizOne.answer4;
+        var answerButtonEl = document.createElement("button");
+         answerButtonEl = quizOne.answer3;
+
+          if (quizOne.answer[i] != [2]) {
+             console.log("false");
+         }
+     }
 }
 
 var startQuiz = function(){
@@ -98,7 +97,7 @@ var startQuiz = function(){
 startButtonEl.addEventListener('click', startQuiz);
 
 
-
+// Need to prevent the user from selecting text, as in highlighting it, also give the answers more of a button appearance
 
     // When the user clicks an answer, (another event listener) it should display correct or incorrect - a true value should be assigned to the correct
     // answer and a false value should be applied to incorrect. (or vice versa, as long as it returns a boolean value)
