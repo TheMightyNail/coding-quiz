@@ -33,11 +33,13 @@
     background-color: white;
 }
 
-.info {
+.answer {
     background-color:white;
     font-size: 20px;
     line-height: 1.5;
 }
+
+
 
 .start-btn {
     display:flex;
@@ -52,7 +54,7 @@
     font-weight: bold;
 }
 
-.info span {
+.answer span {
     background-color:maroon;
     color: white;
     font-weight: bolder;

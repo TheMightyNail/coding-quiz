@@ -3,35 +3,41 @@
 // Once timer goes off, you cannot select an answer
 // You'll get points based on correct answers
 // Your score will be saved and the high score will be displayed
+var quizQuestions = [
+    "What syntax is used for an array?", "What does CSS stand for?", "How long did it take for JavaScript to be created?", 
+    "How do you save your work using Git?", "Which syntax would you use to reference an element's ID?"
+];
+
+var quizAnswersOne = ["{}","()","[]","<>"]
 
 // What syntax is used for an array?
 // {}
 // ()
-// []
+// [] << true
 // <>
 
 // What does CSS stand for?
 // Cool Styling Standards
 // Crazy Sick Stunts
-// Cascading Style Sheets
-// Cascading Style Status
+// Cascading Style Sheets << true
+// Close-Captioning Software
 
 // How long did it take for JavaScript to be created?
 // 3 days
 // 6 months
-// 10 days
+// 10 days << true
 // 30 weeks
 
 // How do you save your work using Git?
 // git checkout -b
-// git commit -m
+// git commit -m << true
 // git remote add origin
 // git pull
 
 // Which syntax would you use to reference an element's ID?
 // .
 // *
-// #
+// # << true
 // $
 
 // Where to start? I NEED: 
@@ -41,9 +47,55 @@
     // Start and display timer. 
         // Research. Don't know the first thing about timers. 
     // Display new text - The first question, along with a multiple choice answer. 
-        // Each answer will be it's own element, or maybe a button? Answer buttons might work here. So these will need to be made .createElement("btn")?
+        // Replace .answer text (quizAnswerEl.textContent = []) with the answers to the quiz. Replace .main-title text (quizQuestionEl.textContent=[]) with the next question. 
+        // Store the questions/answers in an array(s) somehow?
         // But how do I replace text? Do I need to create new elements for the question? Or do I have to somehow replace it?
 
+var startButtonEl = document.querySelector(".start-btn");
+var quizQuestionEl = document.querySelector(".main-title");
+var quizAnswerEl = document.querySelector(".answer");
+var firstAnswerEl = document.querySelector("#first");
+var secondAnswerEl = document.querySelector("#second")
+var thirdAnswerEl = document.querySelector("#third")
+var fourthAnswerEl = document.querySelector("#fourth")
+var fifthAnswerEl = document.querySelector("#fifth")
+
+var quizOne= {
+    question: quizQuestions[0],
+    answer: quizAnswersOne[0],
+    answer: quizAnswersOne[1],
+    answer: quizAnswersOne[2],
+    answer: quizAnswersOne[3]
+}
+
+var switchText = function() {
+    quizQuestionEl.textContent = quizOne.question;
+
+    // getting somewhere with this one. Still need to figure out how the text replaces - maybe can use event.target to return true or false value.
+    // reconsider making the .answer class into <li> - might be able to work with that easier. 
+
+    for (var i=0; i < quizAnswersOne.length; i++) {
+       var answerButtonEl = document.createElement("button");
+        answerButtonEl.textContent = quizOne.answer[i];
+         if (quizOne.answer[i] != [2]) {
+            console.log("false");
+        } return answerButtonEl;
+    }
+//     // this does not work because they are pulling from the same class, so only the first answer gets displayed. This won't work anyway, because
+//     // they need to be their own containers or buttons. But the idea is there, just have to figure out the array better. probably with   
+//     quizAnswerEl.textContent = quizOne.answer1;
+//     quizAnswerEl.textContent = quizOne.answer2;
+//     quizAnswerEl.textContent = quizOne.answer3;
+//     quizAnswerEl.textContent = quizOne.answer4;
+}
+
+var startQuiz = function(){
+    console.log("Ya started the dang quiz!");
+    switchText();
+}
+
+
+startButtonEl.addEventListener('click', startQuiz);
 
 
 
